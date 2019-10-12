@@ -28,8 +28,16 @@ class GUI:
     def signin(self):
         self.person = self.inputbox.get()
         self.inputbox.delete(0, 'end')
-
+        self.names
         #excel stuff
         self.name_col = 2
         self.name_row = self.ws.cell(row=1,column=1).value
         print(self.name_row)
+
+        #get names into array
+        for row in range(2,self.ws.max_row+1):  
+            for column in "B":  #Here you can add or reduce the columns
+                cell_name = "{}{}".format(column, row)
+                self.names.append(self.ws[cell_name].value) # the value of the specific cell
+
+        print(self.names)
