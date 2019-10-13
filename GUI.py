@@ -3,6 +3,8 @@ import os
 import openpyxl
 from openpyxl import Workbook
 from datetime import date
+from tkinter import messagebox
+import ctypes
 
 class GUI:
     def __init__(self, master, size = "925x510"):
@@ -28,6 +30,10 @@ class GUI:
 
     #functions
 
+    #messagebox
+    def Mbox(self, title, text, style):
+        return ctypes.windll.user32.MessageBoxW(0, text, title, style)
+
     #signin
     def signin(self):
         self.person = self.inputbox.get()
@@ -46,11 +52,29 @@ class GUI:
             self.signin_col=self.ws.max_column
             self.wb.save('data.xlsx')
 
+        self.found = False #variable for if name is found
         #finding name in list and checking them off
         for row in range(2,self.ws.max_row+1):   
             if (self.person.capitalize() == (self.ws.cell(row=row,column=self.name_col).value).capitalize()): #checks if the same
                 self.ws.cell(row=row,column=self.signin_col).value = "Present"
                 self.wb.save('data.xlsx')
+                self.found = True
+                break
+
+        #if name isn't found ask if they are new or mispelled
+        if (not self.found): 
+            message_answer = self.Mbox('New Member Prompt', 'Name not found. Are you a new member?', 4)
+                #6 = yes
+                #7 = no
+            if message_answer == 6: #yes
+                #code to add a new name at the bottom
+                self.ws.cell(row=(self.ws.max_row+1),column=self.name_col).value = self.person
+                self.ws.cell(row=self.ws.max_row,column=self.signin_col).value = "Present"
+                self.wb.save('data.xlsx')
+            elif message_answer == 7: #no
+                self.Mbox('New Member Prompt', 'Your name was typed incorrectly. Retype it.', 0)
+
+
 
 
 
