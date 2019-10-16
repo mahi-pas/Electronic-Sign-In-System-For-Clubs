@@ -16,6 +16,16 @@ class GUI:
         self.wb = openpyxl.load_workbook('data.xlsx')
         self.ws = self.wb.active
 
+        #check for if today's column exists, if no make it
+        self.currentcol=self.ws.cell(row = 1, column=self.ws.max_column).value
+        self.today = str(date.today())
+        if (self.currentcol==self.today):
+            self.signin_col=self.ws.max_column
+        else:
+            self.ws.cell(row=1,column=(self.ws.max_column+1)).value = self.today
+            self.signin_col=self.ws.max_column
+            self.wb.save('data.xlsx')
+
         #label
         self.label = Label(master, text="Enter Full Name", font="Helvetica 36 bold")
         self.label.pack()
@@ -42,16 +52,6 @@ class GUI:
         self.name_col = 2
         self.name_row = self.ws.max_row+1
 
-        #check for if today's column exists, if no make it
-        self.currentcol=self.ws.cell(row = 1, column=self.ws.max_column).value
-        self.today = str(date.today())
-        if (self.currentcol==self.today):
-            self.signin_col=self.ws.max_column
-        else:
-            self.ws.cell(row=1,column=(self.ws.max_column+1)).value = self.today
-            self.signin_col=self.ws.max_column
-            self.wb.save('data.xlsx')
-
         self.found = False #variable for if name is found
         #finding name in list and checking them off
         for row in range(2,self.ws.max_row+1):   
@@ -59,6 +59,7 @@ class GUI:
                 self.ws.cell(row=row,column=self.signin_col).value = "Present"
                 self.wb.save('data.xlsx')
                 self.found = True
+                self.Mbox('Sign In', 'You have successfully signed in', 0)
                 break
 
         #if name isn't found ask if they are new or mispelled
