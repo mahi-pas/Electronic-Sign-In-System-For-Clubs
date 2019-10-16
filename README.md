@@ -5,3 +5,7 @@ if your name isn't there is asks if you are new or if you typed it in wrong
 
 # Status: DONE! 
 # Still getting updates (more QOL features, base program works fine)
+
+To start:
+
+Run Sign-In.py
