@@ -6,8 +6,11 @@ if your name isn't there is asks if you are new or if you typed it in wrong
 Outputs all of this to an excel sheet for simple and inuitive sharing
 
 ![Screenshot](https://i.imgur.com/sJ273o5.png)
+
 ![Screenshot](https://imgur.com/1J35E0t)
+
 ![Screenshot](https://imgur.com/5ZtmNtL)
+
 ![Screenshot](https://imgur.com/pxBymlt)
 
 
