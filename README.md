@@ -8,3 +8,4 @@ if your name isn't there is asks if you are new or if you typed it in wrong
 To start:
 
 Run Sign-In.py
+(find it in cmd and type in: python Sign-In.py)
