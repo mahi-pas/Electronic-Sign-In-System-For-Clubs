@@ -7,11 +7,11 @@ Outputs all of this to an excel sheet for simple and inuitive sharing
 
 ![Screenshot](https://i.imgur.com/sJ273o5.png)
 GUI
-![Screenshot](https://imgur.com/1J35E0t)
+![Screenshot](https://i.imgur.com/1J35E0t.png)
 Prompt for new members
-![Screenshot](https://imgur.com/5ZtmNtL)
+![Screenshot](https://imgur.com/5ZtmNtL.png)
 Automatically adds them to excel sheet
-![Screenshot](https://imgur.com/pxBymlt)
+![Screenshot](https://imgur.com/pxBymlt.png)
 Can track multiple days
 
 
